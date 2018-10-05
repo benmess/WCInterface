@@ -1587,7 +1587,7 @@ namespace WcfWCService
             }
         }
 
-        //This is a function to simply progress a WO and set the completion date. This should push to GIT hopefully now that I have chnaged passwpords
+        //This is a function to simply progress a WO and set the completion date.
         public string SetTaskWOCompletionDate(string sSessionId, string sUserId, string sWorkItemId, string sAssignedActivityId, string sDateOnCompletion, string sWebAppId)
         {
             if (!IsExternalUserValid(sSessionId, sUserId, Convert.ToInt16(sWebAppId)))
