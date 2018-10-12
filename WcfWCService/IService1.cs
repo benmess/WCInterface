@@ -37,6 +37,10 @@ namespace WcfWCService
                                           string sOriginator, string sNew, string sExistingWEDNo, string sWebAppId);
 
         [OperationContract]
+        [WebGet(UriTemplate = "setdocpartdescribedbylink/{sSessionId}/{sUserId}/{sDocNo}/{sPartNo}/{sWebAppId}", ResponseFormat = WebMessageFormat.Xml)]
+        string SetDocPartDescribedByLink(string sSessionId, string sUserId, string sDocNo, string sPartNo, string sWebAppId);
+
+        [OperationContract]
         [WebGet(UriTemplate = "createprojectworkitem/{sSessionId}/{sUserId}/{sFullName}/{sParentPartNo}/{sPartNo}/{sPartName}/{sProductName}/{sPartType}/{sPartUsageType}/{sPartUsageUnit}/{sFolderNameAndPath}/{sCheckInComments}/{sLineNumber}/{iProdOrLibrary}/{sWebAppId}", ResponseFormat = WebMessageFormat.Xml)]
         string CreateProjectWorkItem(string sSessionId, string sUserId, string sFullName, string sParentPartNo, string sPartNo, string sPartName,
                                             string sProductName, string sPartType, string sPartUsageType, string sPartUsageUnit, string sFolderNameAndPath,
@@ -85,6 +89,14 @@ namespace WcfWCService
         [OperationContract]
         [WebGet(UriTemplate = "deletedoctopartrefs/{sSessionId}/{sUserId}/{sFullname}/{sDocNo}/{sPartNos}/{sCheckinComments}/{sWebAppId}", ResponseFormat = WebMessageFormat.Xml)]
         string DeleteDocToPartRefs(string sSessionId, string sUserId, string sFullName, string sDocNo, string sPartNos, string sCheckinComments, string sWebAppId);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "deletedoctopartdescribeby/{sSessionId}/{sUserId}/{sFullname}/{sDocNo}/{sPartNo}/{sCheckinComments}/{sWebAppId}", ResponseFormat = WebMessageFormat.Xml)]
+        string DeleteDocToPartDescribeBy(string sSessionId, string sUserId, string sFullName, string sDocNo, string sPartNo, string sCheckinComments, string sWebAppId);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "deletedoctopartdescribebys/{sSessionId}/{sUserId}/{sFullname}/{sDocNo}/{sPartNos}/{sCheckinComments}/{sWebAppId}", ResponseFormat = WebMessageFormat.Xml)]
+        string DeleteDocToPartDescribeBys(string sSessionId, string sUserId, string sFullName, string sDocNo, string sPartNos, string sCheckinComments, string sWebAppId);
 
         [OperationContract]
         [WebGet(UriTemplate = "updateactionrequest/{sSessionId}/{sUserId}/{sFullname}/{sARCode}/{sARName}/{sARCategory}/{sARCause}/{sARComments}/{sARLongDesc}/{sARDate}/{sRequestActionType}/{sCheckInComments}/{sWebAppId}", ResponseFormat = WebMessageFormat.Xml)]
@@ -152,8 +164,8 @@ namespace WcfWCService
         string SetTaskOperationalHoursOnCompletion(string sSessionId, string sUserId, string sWorkItemId, string sAssignedActivityId, string sHoursOnCompletion, string sWebAppId);
 
         [OperationContract]
-        [WebGet(UriTemplate = "settaskwocompletiondate/{sSessionId}/{sUserId}/{sWorkItemId}/{sAssignedActivityId}/{sDateOnCompletion}/{sWebAppId}", ResponseFormat = WebMessageFormat.Xml)]
-        string SetTaskWOCompletionDate(string sSessionId, string sUserId, string sWorkItemId, string sAssignedActivityId, string sDateOnCompletion, string sWebAppId);
+        [WebGet(UriTemplate = "settaskwocompletiondate/{sSessionId}/{sUserId}/{sWorkItemId}/{sAssignedActivityId}/{sRoute}/{sDateOnCompletion}/{sWebAppId}", ResponseFormat = WebMessageFormat.Xml)]
+        string SetTaskWOCompletionDate(string sSessionId, string sUserId, string sWorkItemId, string sAssignedActivityId, string sRoute, string sDateOnCompletion, string sWebAppId);
 
         [OperationContract]
         [WebGet(UriTemplate = "progresstask/{sSessionId}/{sUserId}/{sWorkItemId}/{sAssignedActivityId}/{sRoute}/{sWebAppId}", ResponseFormat = WebMessageFormat.Xml)]

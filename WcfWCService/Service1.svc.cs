@@ -331,6 +331,27 @@ namespace WcfWCService
             }
         }
 
+        public string SetDocPartDescribedByLink(string sSessionId, string sUserId,  string sDocNo, string sPartNo, string sWebAppId)
+        {
+
+            if (!IsExternalUserValid(sSessionId, sUserId, Convert.ToInt16(sWebAppId)))
+            {
+                return "User " + sUserId + " is not logged in";
+            }
+            else
+            {
+                Update_User_Time(sUserId, sSessionId);
+                ExampleService.MyJavaServiceClient client2 = GetWCService();
+                string sCheckInComments;
+                string sRtn2 = "";
+
+                sCheckInComments = "Creating link between " + sDocNo + " and " + sPartNo;
+                sRtn2 = client2.setdoctopartdescribedby(sUserId, sDocNo, sPartNo, sCheckInComments, Convert.ToInt16(sWebAppId));
+
+                return sRtn2;
+            }
+        }
+
         public string CreateProjectWorkItem(string sSessionId, string sUserId, string sFullName, string sParentPartNo, string sPartNo, string sPartName,
                                             string sProductName, string sPartType, string sPartUsageType, string sPartUsageUnit, string sFolderNameAndPath,
                                             string sCheckInComments, string sLineNumber, string iProdOrLibrary, string sWebAppId)
@@ -636,6 +657,37 @@ namespace WcfWCService
                 string[] sPartNos2 = sPartNos.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
 
                 return client2.deletedoctopartrefs(sFullName, sDocNo, sPartNos2, sCheckinComments, Convert.ToInt16(sWebAppId));
+            }
+        }
+
+        public string DeleteDocToPartDescribeBy(string sSessionId, string sUserId, string sFullName, string sDocNo, string sPartNo, string sCheckinComments, string sWebAppId)
+        {
+            if (!IsExternalUserValid(sSessionId, sUserId, Convert.ToInt16(sWebAppId)))
+            {
+                return "User " + sUserId + " is not logged in";
+            }
+            else
+            {
+                Update_User_Time(sUserId, sSessionId);
+                ExampleService.MyJavaServiceClient client2 = GetWCService();
+                return client2.deletedoctopartdescribeby(sFullName, sDocNo, sPartNo, sCheckinComments, Convert.ToInt16(sWebAppId));
+            }
+        }
+
+        public string DeleteDocToPartDescribeBys(string sSessionId, string sUserId, string sFullName, string sDocNo, string sPartNos, string sCheckinComments, string sWebAppId)
+        {
+            if (!IsExternalUserValid(sSessionId, sUserId, Convert.ToInt16(sWebAppId)))
+            {
+                return "User " + sUserId + " is not logged in";
+            }
+            else
+            {
+                Update_User_Time(sUserId, sSessionId);
+                ExampleService.MyJavaServiceClient client2 = GetWCService();
+                char[] charSeparators = new char[] { '^' };
+                string[] sPartNos2 = sPartNos.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries);
+
+                return client2.deletedoctopartdescribebys(sFullName, sDocNo, sPartNos2, sCheckinComments, Convert.ToInt16(sWebAppId));
             }
         }
 
@@ -1588,7 +1640,7 @@ namespace WcfWCService
         }
 
         //This is a function to simply progress a WO and set the completion date.
-        public string SetTaskWOCompletionDate(string sSessionId, string sUserId, string sWorkItemId, string sAssignedActivityId, string sDateOnCompletion, string sWebAppId)
+        public string SetTaskWOCompletionDate(string sSessionId, string sUserId, string sWorkItemId, string sAssignedActivityId, string sRoute, string sDateOnCompletion, string sWebAppId)
         {
             if (!IsExternalUserValid(sSessionId, sUserId, Convert.ToInt16(sWebAppId)))
             {
@@ -1606,7 +1658,7 @@ namespace WcfWCService
                 sVariableValues[0] = sDateOnCompletion;
                 sVariableTypes[0] = "date";
 
-                return client2.completetask(Convert.ToInt32(sWorkItemId), Convert.ToInt32(sAssignedActivityId), "", sVariableNames, sVariableTypes, sVariableValues, Convert.ToInt16(sWebAppId));
+                return client2.completetask(Convert.ToInt32(sWorkItemId), Convert.ToInt32(sAssignedActivityId), sRoute, sVariableNames, sVariableTypes, sVariableValues, Convert.ToInt16(sWebAppId));
             }
         }
 
