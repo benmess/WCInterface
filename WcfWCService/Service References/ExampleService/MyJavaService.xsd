@@ -28,6 +28,10 @@
   <xs:element name="deleteattachmentResponse" type="tns:deleteattachmentResponse" />
   <xs:element name="deletecnattachment" type="tns:deletecnattachment" />
   <xs:element name="deletecnattachmentResponse" type="tns:deletecnattachmentResponse" />
+  <xs:element name="deletedoctodocref" type="tns:deletedoctodocref" />
+  <xs:element name="deletedoctodocrefResponse" type="tns:deletedoctodocrefResponse" />
+  <xs:element name="deletedoctodocrefs" type="tns:deletedoctodocrefs" />
+  <xs:element name="deletedoctodocrefsResponse" type="tns:deletedoctodocrefsResponse" />
   <xs:element name="deletedoctopartdescribeby" type="tns:deletedoctopartdescribeby" />
   <xs:element name="deletedoctopartdescribebyResponse" type="tns:deletedoctopartdescribebyResponse" />
   <xs:element name="deletedoctopartdescribebys" type="tns:deletedoctopartdescribebys" />
@@ -64,6 +68,10 @@
   <xs:element name="setdocdoclinkResponse" type="tns:setdocdoclinkResponse" />
   <xs:element name="setdocrevision" type="tns:setdocrevision" />
   <xs:element name="setdocrevisionResponse" type="tns:setdocrevisionResponse" />
+  <xs:element name="setdoctodocref" type="tns:setdoctodocref" />
+  <xs:element name="setdoctodocrefResponse" type="tns:setdoctodocrefResponse" />
+  <xs:element name="setdoctodocrefs" type="tns:setdoctodocrefs" />
+  <xs:element name="setdoctodocrefsResponse" type="tns:setdoctodocrefsResponse" />
   <xs:element name="setdoctopartdescribedby" type="tns:setdoctopartdescribedby" />
   <xs:element name="setdoctopartdescribedbyResponse" type="tns:setdoctopartdescribedbyResponse" />
   <xs:element name="setdoctopartdescribedbymulti" type="tns:setdoctopartdescribedbymulti" />
@@ -390,22 +398,6 @@
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="completetask">
-    <xs:sequence>
-      <xs:element name="arg0" type="xs:long" />
-      <xs:element name="arg1" type="xs:long" />
-      <xs:element minOccurs="0" name="arg2" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg3" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg4" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg5" nillable="true" type="xs:string" />
-      <xs:element name="arg6" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="completetaskResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="setpartmultipleusageattributes">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string" />
@@ -419,6 +411,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="setpartmultipleusageattributesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="completetask">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:long" />
+      <xs:element name="arg1" type="xs:long" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg5" nillable="true" type="xs:string" />
+      <xs:element name="arg6" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="completetaskResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
@@ -463,17 +471,6 @@
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="add">
-    <xs:sequence>
-      <xs:element name="arg0" type="xs:int" />
-      <xs:element name="arg1" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="addResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="setdocattributestrings">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string" />
@@ -487,6 +484,17 @@
   <xs:complexType name="setdocattributestringsResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="add">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int" />
+      <xs:element name="arg1" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="emailmessage">
@@ -616,6 +624,20 @@
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="setdoctodocref">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element minOccurs="0" name="arg3" type="xs:string" />
+      <xs:element name="arg4" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setdoctodocrefResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="deletepartpartlinkbylinenumber">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string" />
@@ -643,20 +665,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="deletepartpartlinkbydispatchdocketResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="deletedoctopartref">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="xs:string" />
-      <xs:element minOccurs="0" name="arg1" type="xs:string" />
-      <xs:element minOccurs="0" name="arg2" type="xs:string" />
-      <xs:element minOccurs="0" name="arg3" type="xs:string" />
-      <xs:element name="arg4" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="deletedoctopartrefResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
@@ -698,18 +706,16 @@
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="setpartattributes">
+  <xs:complexType name="deletedoctopartref">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string" />
       <xs:element minOccurs="0" name="arg1" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg3" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg4" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="arg5" type="xs:string" />
-      <xs:element name="arg6" type="xs:int" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element minOccurs="0" name="arg3" type="xs:string" />
+      <xs:element name="arg4" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="setpartattributesResponse">
+  <xs:complexType name="deletedoctopartrefResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
@@ -733,6 +739,36 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="updateprodorderpartpartlinkwithattributesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setpartattributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="arg5" type="xs:string" />
+      <xs:element name="arg6" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setpartattributesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deletedoctodocref">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" name="arg2" type="xs:string" />
+      <xs:element minOccurs="0" name="arg3" type="xs:string" />
+      <xs:element name="arg4" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deletedoctodocrefResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
@@ -773,6 +809,34 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="deleteprattachmentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deletedoctodocrefs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="arg3" type="xs:string" />
+      <xs:element name="arg4" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deletedoctodocrefsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setdoctodocrefs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+      <xs:element minOccurs="0" name="arg1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="arg2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="arg3" type="xs:string" />
+      <xs:element name="arg4" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="setdoctodocrefsResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:string" />
     </xs:sequence>
