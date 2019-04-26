@@ -2688,6 +2688,7 @@ namespace WcfWCService
         {
             Environment env = new Environment();
             string sCertVal = env.Get_Environment_String_Value("CertificateValue");
+
             ExampleService.MyJavaServiceClient client2 = new ExampleService.MyJavaServiceClient();
 
             client2.ClientCredentials.UserName.UserName = "benmess";
