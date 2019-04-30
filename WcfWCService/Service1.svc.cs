@@ -27,6 +27,7 @@ namespace WcfWCService
             public string CookieLogin(string sUsername, string sPassword, string sWebAppId)
             {
                 string sSessionId;
+                string sNothing = "";
                 try
                 {
                     Environment env = new Environment();
